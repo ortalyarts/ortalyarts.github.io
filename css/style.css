@@ -108,7 +108,7 @@ header {
     border-bottom: 0.188rem solid #e7590b;
 }
 /*Content area */
-#main {
+main {
     flex:1; /* to stick the footer to the bottom */
     display:flex; 
     flex-wrap :wrap;
@@ -119,20 +119,20 @@ header {
     max-width: 70rem;
     margin:2rem auto;
 }
-#main > * {
+main > * {
     flex-shrink: 1;
     flex-grow: 1;
 }
-#main article {
+main article {
     background:white;
     padding:2rem;
     flex-basis:30rem;
 }
-#main article img {
+main article img {
     max-width: 100%;  
 }
 /* Round corners */
-#main article, aside section {
+main article, aside section {
     /* box-shadow:0px 0px 10px -5px #4c4948; */
     box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(217 19% 35% / 0.25);
 
@@ -153,7 +153,7 @@ aside section ul {
 }
 
 @media screen and (min-width:40rem) {
-    #main {flex-direction:row;} 
+    main {flex-direction:row;} 
     #menubar {display:none;}
     .nav {display:block !important;}
     .nav ul {flex-direction: row; }
