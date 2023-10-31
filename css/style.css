@@ -19,8 +19,13 @@ select {
   font: inherit;
 }
 /* General STYLE */
+:root {
+    --accent: #fa8c1d;
+    --gradient: linear-gradient(33deg, #5790d5,  #1f8fc3, #457e46, #ff853b, #ff4f5a, #ff69ac);
+  }
+
 body {
-    background:#dcdcdc;
+    font-family:'inter';
     font-size:90%;
     padding:0em;
     text-rendering: optimizeSpeed;
@@ -32,34 +37,53 @@ h1, h2, h3, ul {
     padding:0;
 }
 h1 {
-    font-size:2.5em;
+    /* font-size:4.5em; */
+    /* font-size: 3vw;
     line-height:1em;
-    font-family:Helvetica, Arial, sans-serif;
     font-weight:100;
+    text-align:center; 
+    color:white; 
+    padding:1em 0em; */
+    color: transparent;
+    font-size:1px;
+}
+.header-holder {
+    display:grid;
+    gap: 0.1rem;
+    grid-template-columns: 3fr 0.5fr; 
+    max-width: 100rem;
+    margin:0 auto;
+}
+.header-holder img {
+    align-self:end;
+    display:block;
+}
+h2, h3 {
+    font-size:3rem;
+    line-height:1em;
+    font-weight:100;
+    margin-bottom:1em;
     text-align:center;
-    color:#e2dbdb;
-    padding:1em 0em;
 }
 h2 {
-    font-size:1.563em;
-    line-height:1em;
-    font-family:Helvetica, Arial, sans-serif;
-    font-weight:100;
+    color:#5da8c3;
+}
+h3 {
+    font-size:2rem;
     color:#2f2d2c;
-    margin-bottom:1em;
-    text-align:left;
 }
 p, li, a {
-    line-height:1.25em;
-    font-family:Helvetica, Arial, sans-serif;
+    line-height:1.5em;
     font-weight:100;
     color:#2f2d2c;
 }
 p {
     text-align:justify;
+    padding:0 0 0.7rem 0;
 }
 li {
-    list-style:square;
+    list-style:none;
+    /* list-style:square; */
 }
 a {
     text-decoration:none;
@@ -70,14 +94,31 @@ a {
 #menubar {
     background:white;
 }
+#menubar a {
+    line-height: 0.1rem;
+}
 #menubar a img{
     width: 2.5rem;
+    padding:0.2rem 0 0 0;
 }
 /* header */
 header {
     display:block;
-    background:#2f2c2c;
+    /* background:#2f2c2c; */
+    /* background-image: linear-gradient(33deg, rgb(44 129 213),  #5da8c3, #457e46); */
+    background-image: var(--gradient);
+    background-size:400%;
+    animation: bg-animation 30s infinite alternate;
 }
+@keyframes bg-animation {
+    0% {
+        background-position:left;
+    }
+    100% {
+        background-position:right;
+    }
+}
+
 /* Navigation */
 .nav {
     display:none;
@@ -99,13 +140,14 @@ header {
     font-size:1.125rem;
     text-align: center;
     border-bottom: 0.2rem solid white;
+    border-radius: 5rem;
 }
 .nav a:hover {
-    background:#dbd9d8;
-    border-bottom: 0.2rem solid #e7590b;
+    color:var(--accent);;
+    border-bottom: 0.2rem solid var(--accent);;
 }
 .nav a.active {
-    border-bottom: 0.188rem solid #e7590b;
+    border-bottom: 0.188rem solid var(--accent);;
 }
 /*Content area */
 main {
@@ -129,14 +171,42 @@ main article {
     flex-basis:30rem;
 }
 main article img {
-    max-width: 100%;  
+    max-width: 100%; 
+    display:block; 
+    margin:2rem auto;
 }
 /* Round corners */
-main article, aside section {
+main article {
     /* box-shadow:0px 0px 10px -5px #4c4948; */
     box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(217 19% 35% / 0.25);
-
-    border-radius: 5px;
+}
+span.accent {
+    color:var(--accent);
+}
+.button {
+    display:block;
+    width: fit-content;
+    margin: 2rem auto;
+    /* padding:1rem 2rem; */
+    padding:2rem 3rem;
+    background: var(--accent);
+    color:white;
+    /* font-size:0.75rem; */
+    font-size:1rem;
+    letter-spacing:0.02rem;
+    text-transform: uppercase;
+    box-shadow:0px 0px 10px -5px #4c4948;
+    border-radius: 5rem;
+}
+.button:hover, .button:focus-visible {
+    background:#ef7f0f;
+}
+.hover-animation {
+    transition:transform 1000ms;
+}
+.hover-animation:hover {
+    transform:translatey(-0.3rem);
+    transition:transform 250ms;
 }
 aside {
     display:flex; 
@@ -145,13 +215,25 @@ aside {
     flex-basis:10rem;
 }
 aside section {
-    background:white;
     padding:2rem;
+    border-radius: 5rem;
+}
+aside section:nth-child(1){
+    background:#5cb2b5;
+}
+aside section:nth-child(2){
+    background:#5da8c3;
+}
+aside section:nth-child(3){
+    background: #5485b4;
 }
 aside section ul {
     margin: 0 0 0 1rem;
 }
-
+aside section * {
+    text-align:center;
+    color:white;
+}
 @media screen and (min-width:40rem) {
     main {flex-direction:row;} 
     #menubar {display:none;}
@@ -162,7 +244,7 @@ aside section ul {
 /* Footer */
 footer {
     display:block;
-    background:#2f2c2c;
+    background:#5bb2b5;
 }
 footer ul {
     display:flex; 
@@ -176,7 +258,7 @@ footer ul {
 }
 footer ul li {
     list-style:none;
-    color:#e2dbdb;
+    color:#ffffff;
     font-size:0.75rem;
     line-height:2rem;
 }
